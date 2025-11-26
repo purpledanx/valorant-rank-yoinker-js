@@ -34,6 +34,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build & Release
+        if: github.repository_owner == github.actor
         run: pnpm release ${{ github.event.inputs.bump }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
