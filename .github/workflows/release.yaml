@@ -33,9 +33,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Fix outdated lockfile
-        run: pnpm install --no-frozen-lockfile
-  
       - name: Build & Release
         run: pnpm release ${{ github.event.inputs.bump }}
         env:
