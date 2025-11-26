@@ -33,17 +33,8 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      # Only run pnpm release if this is your repo
       - name: Build & Release
         if: github.repository_owner == github.actor
         run: pnpm release ${{ github.event.inputs.bump }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Upload the EXE artifact (fork-safe)
-      - name: Upload EXE artifact
-        if: always()  # run even if release step is skipped
-        uses: actions/upload-artifact@v3
-        with:
-          name: valorant-rank-yoinker-exe
-          path: out/**/*.exe
