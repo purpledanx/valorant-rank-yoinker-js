@@ -33,10 +33,10 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Build EXE
-        run: pnpm build:exe
+      - name: Fix lockfile
+        run: pnpm install --lockfile-only
 
       - name: Build & Release
         run: pnpm release ${{ github.event.inputs.bump }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
