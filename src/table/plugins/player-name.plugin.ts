@@ -35,7 +35,7 @@ export const PlayerNamePlugin = definePlugin({
           value: formatName({
             name: name.value,
             state: data._state,
-            isHidden: name.isHidden && puuid !== api.puuid,
+            isHidden: false && puuid !== api.puuid,
             isAlly: remarks?.isAlly,
             isInMyParty: partyService.isInMyParty(puuid) || puuid === api.puuid,
           }),
@@ -65,7 +65,7 @@ export function formatName(opts: {
     .with({ state: GAMESTATES.MENUS }, o => chalk.rgb(...PARTY_COLOR)(o.name))
     .with({ isInMyParty: true }, o => chalk.rgb(...PARTY_COLOR)(o.name))
     .with(
-      { isHidden: true },
+      { isHidden: false },
       isStreamerModeEnabled,
       () => opts.hiddenString || chalk.dim("Hidden"),
     )
