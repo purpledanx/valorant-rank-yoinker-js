@@ -19,7 +19,8 @@
     "build:prod": "tsx scripts/build.ts --prod",
     "build": "pnpm build:prod",
     "type:check": "tsc --noEmit",
-    "release": "release-it"
+    "release": "release-it",
+    "build:exe": "pkg out/vryjs.mjs --targets node18-win-x64 --output out/vryjs.exe"
   },
   "keywords": [
     "valorant",
@@ -38,7 +39,8 @@
     "prettier": "^3.1.1",
     "release-it": "^17.0.1",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "pkg": "^5.8.1"
   },
   "dependencies": {
     "@libsql/client": "^0.15.7",
